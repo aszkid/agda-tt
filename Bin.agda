@@ -106,10 +106,10 @@ data One : Bin → Set where
   add-i : ∀ {b : Bin} → One b → One (b I)
 -- </editor-fold>
 
--- A binary string is canonical if it...
+-- A binary string is canonical if...
 data Can : Bin → Set where
-  just-zero : Can (⟨⟩ O) -- ...is a single O
-  leading-one : ∀ {b : Bin} → One b → Can b -- ...or starts with I
+  just-zero : Can (⟨⟩ O) -- ...it is a single O, or...
+  leading-one : ∀ {b : Bin} → One b → Can b -- ...has a leading I
 
 -- <editor-fold>
 
