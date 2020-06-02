@@ -47,8 +47,11 @@ _ : from (⟨⟩ I O O) ≡ 4
 _ = refl
 
 -- Want:
+
 --   ∀ {n : ℕ}   → from (to n) ≡ n
 --   ∀ {b : Bin} → to (from b) ≡ b
+
+-- The problem:
 
 _ : from (⟨⟩ O O O O O) ≡ 0
 _ = refl
@@ -99,8 +102,8 @@ from-to (suc n) =
 --------------------------------------------------------------------------------
 -- Canonical binary strings
 
-data One : Bin → Set where
 -- <editor-fold>
+data One : Bin → Set where
   just-one : One (⟨⟩ I)
   add-o : ∀ {b : Bin} → One b → One (b O)
   add-i : ∀ {b : Bin} → One b → One (b I)
@@ -111,25 +114,27 @@ data Can : Bin → Set where
   just-zero : Can (⟨⟩ O) -- ...it is a single O, or...
   leading-one : ∀ {b : Bin} → One b → Can b -- ...has a leading I
 
--- <editor-fold>
-
 --------------------------------------------------------------------------------
 -- Can b → Can (inc b)
 
-
+-- <editor-fold>
 one-inc : ∀ {b : Bin} → One b → One (inc b)
 one-inc just-one = add-o just-one
 one-inc (add-o one-b) = add-i one-b
 one-inc (add-i one-b) = add-o (one-inc one-b)
+-- </editor-fold>
 
 can-inc : ∀ {b : Bin} → Can b → Can (inc b)
+-- <editor-fold>
 can-inc just-zero = leading-one just-one
 can-inc (leading-one x) = leading-one (one-inc x)
+-- </editor-fold>
 
 --------------------------------------------------------------------------------
 -- Can (to n)
 
 to-can : ∀ {n : ℕ} → Can (to n)
+-- <editor-fold>
 to-can {zero} = just-zero
 to-can {suc n} = can-inc (to-can {n})
 -- </editor-fold>
