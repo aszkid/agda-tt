@@ -13,3 +13,6 @@ data _≤_ : ℕ → ℕ → Set where
     → m ≤ n
       -------------
     → suc m ≤ suc n
+
+_ : 2 ≤ 4
+_ = s≤s (s≤s z≤n)
