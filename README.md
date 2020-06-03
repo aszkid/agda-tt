@@ -3,7 +3,7 @@ Once you've got agda installed, you can either use Atom or emacs to edit and pro
 
 [Programming Language Foundations in Agda](https://plfa.github.io/) is an excellent introudction to the language and has really cool exercises.
 
-Here is some cool stuff in agda:
+Here is some cool stuff in agda:\
 [Proving Insertion Sort in Agda](https://wenkokke.github.io/2016/insertion-sort-in-agda/)\
 [Avl Trees in Agda vs Haskell](https://doisinkidney.com/posts/2018-07-30-verified-avl.html)\
 [Equivalence Proofs Between Polynomials over Commutative Rings and Semirings](https://wenkokke.github.io/2016/insertion-sort-in-agda/)\
